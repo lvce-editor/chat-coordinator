@@ -1,5 +1,6 @@
 export interface ChatCoordinatorMessage {
   readonly id: string
+  readonly inProgress?: boolean
   readonly role: 'assistant' | 'tool' | 'user'
   readonly text: string
   readonly time: string
@@ -29,6 +30,7 @@ export interface ChatCoordinatorSubmitErrorResult {
 
 export interface ChatCoordinatorSubmitSuccessResult {
   readonly assistantMessageId: string
+  readonly runId: string
   readonly sessionId: string
   readonly type: 'success'
   readonly userMessageId: string
@@ -51,4 +53,44 @@ export interface ChatCoordinatorSessionUpdatedEvent {
   readonly type: 'session-updated'
 }
 
-export type ChatCoordinatorEvent = ChatCoordinatorSessionCreatedEvent | ChatCoordinatorSessionDeletedEvent | ChatCoordinatorSessionUpdatedEvent
+export interface ChatCoordinatorMessageAppendedEvent {
+  readonly message: ChatCoordinatorMessage
+  readonly sessionId: string
+  readonly type: 'message-appended'
+}
+
+export interface ChatCoordinatorMessageUpdatedEvent {
+  readonly message: ChatCoordinatorMessage
+  readonly runId: string
+  readonly sessionId: string
+  readonly type: 'message-updated'
+}
+
+export interface ChatCoordinatorRunStartedEvent {
+  readonly assistantMessageId: string
+  readonly runId: string
+  readonly sessionId: string
+  readonly type: 'run-started'
+}
+
+export interface ChatCoordinatorRunFinishedEvent {
+  readonly runId: string
+  readonly sessionId: string
+  readonly type: 'run-finished'
+}
+
+export interface ChatCoordinatorRunCancelledEvent {
+  readonly runId: string
+  readonly sessionId: string
+  readonly type: 'run-cancelled'
+}
+
+export type ChatCoordinatorEvent =
+  | ChatCoordinatorMessageAppendedEvent
+  | ChatCoordinatorMessageUpdatedEvent
+  | ChatCoordinatorRunCancelledEvent
+  | ChatCoordinatorRunFinishedEvent
+  | ChatCoordinatorRunStartedEvent
+  | ChatCoordinatorSessionCreatedEvent
+  | ChatCoordinatorSessionDeletedEvent
+  | ChatCoordinatorSessionUpdatedEvent

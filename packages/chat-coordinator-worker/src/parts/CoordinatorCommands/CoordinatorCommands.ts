@@ -26,6 +26,10 @@ export const submit = async (options: Readonly<ChatCoordinatorSubmitOptions>): P
   return CoordinatorState.submit(options)
 }
 
+export const cancelRun = async (runId: string): Promise<boolean> => {
+  return CoordinatorState.cancelRun(runId)
+}
+
 export const subscribe = async (subscriberId: string): Promise<void> => {
   CoordinatorState.subscribe(subscriberId)
 }
@@ -36,4 +40,8 @@ export const unsubscribe = async (subscriberId: string): Promise<void> => {
 
 export const consumeEvents = async (subscriberId: string) => {
   return CoordinatorState.consumeEvents(subscriberId)
+}
+
+export const waitForEvents = async (subscriberId: string, timeout?: number) => {
+  return CoordinatorState.waitForEvents(subscriberId, timeout)
 }

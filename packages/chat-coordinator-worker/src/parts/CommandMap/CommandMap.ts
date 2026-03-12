@@ -4,6 +4,7 @@ import * as NetworkCommandMap from './NetworkCommandMap.ts'
 
 export const commandMap = {
   ...NetworkCommandMap.networkCommandMap,
+  'chatCoordinator.cancelRun': CoordinatorCommands.cancelRun,
   'chatCoordinator.consumeEvents': CoordinatorCommands.consumeEvents,
   'chatCoordinator.createSession': CoordinatorCommands.createSession,
   'chatCoordinator.deleteSession': CoordinatorCommands.deleteSession,
@@ -12,5 +13,6 @@ export const commandMap = {
   'chatCoordinator.submit': CoordinatorCommands.submit,
   'chatCoordinator.subscribe': CoordinatorCommands.subscribe,
   'chatCoordinator.unsubscribe': CoordinatorCommands.unsubscribe,
+  'chatCoordinator.waitForEvents': CoordinatorCommands.waitForEvents,
   'HandleMessagePort.handleMessagePort': handleMessagePort,
 }
