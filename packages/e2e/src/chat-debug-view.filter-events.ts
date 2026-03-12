@@ -7,7 +7,7 @@ export const skip = 1
 export const test: Test = async ({ Command, expect, Locator }) => {
   // arrange
   await Command.execute('Main.openUri', 'chat-coordinator://e2e-session-filter')
-  await expect(Locator('.chatNetwork')).toBeVisible()
+  await expect(Locator('.chatCoordinator')).toBeVisible()
 
   const events = [
     {
@@ -29,14 +29,14 @@ export const test: Test = async ({ Command, expect, Locator }) => {
       type: 'handle-click',
     },
   ]
-  await Command.execute('chatNetWork.setEvents', events)
+  await Command.execute('chatCoordinator.setEvents', events)
   const filterInput = Locator('.InputBox[name="filter"]')
 
   // act
   await filterInput.type('beta')
 
   // assert
-  const eventNodes = Locator('.chatNetworkEvent')
+  const eventNodes = Locator('.chatCoordinatorEvent')
   await expect(eventNodes).toHaveCount(1)
   await expect(eventNodes.nth(0)).toContainText('"value": "Beta response"')
 }
