@@ -97,7 +97,14 @@ test('setSession emits message updated when only text, inProgress or toolCalls c
     type: 'chat-message-updated',
   })
   expect(saved?.messages).toEqual([
-    { id: 'message-1', inProgress: false, role: 'assistant', text: 'hello', time: '10:00', toolCalls: [{ arguments: '{"path":"a"}', name: 'read_file' }] },
+    {
+      id: 'message-1',
+      inProgress: false,
+      role: 'assistant',
+      text: 'hello',
+      time: '10:00',
+      toolCalls: [{ arguments: '{"path":"a"}', name: 'read_file' }],
+    },
   ])
 })
 
