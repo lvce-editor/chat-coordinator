@@ -1,7 +1,5 @@
-import type { ChatState } from '../ChatState/ChatState.ts'
 import * as MockOpenApiStream from '../MockOpenApiStream/MockOpenApiStream.ts'
 
-export const mockOpenApiStreamFinish = (state: ChatState): ChatState => {
+export const mockOpenApiStreamFinish = (): void => {
   MockOpenApiStream.finish()
-  return state
 }

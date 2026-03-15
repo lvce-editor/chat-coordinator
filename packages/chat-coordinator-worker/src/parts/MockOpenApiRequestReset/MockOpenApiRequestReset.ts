@@ -1,7 +1,5 @@
-import type { ChatState } from '../ChatState/ChatState.ts'
 import * as MockOpenApiRequest from '../MockOpenApiRequest/MockOpenApiRequest.ts'
 
-export const mockOpenApiRequestReset = (state: ChatState): ChatState => {
+export const mockOpenApiRequestReset = (): void => {
   MockOpenApiRequest.reset()
-  return state
 }

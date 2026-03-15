@@ -1,7 +1,5 @@
-import type { ChatState } from '../ChatState/ChatState.ts'
 import * as MockOpenApiStream from '../MockOpenApiStream/MockOpenApiStream.ts'
 
-export const mockOpenApiSetHttpErrorResponse = (state: ChatState, statusCode: number, body: unknown): ChatState => {
+export const mockOpenApiSetHttpErrorResponse = (statusCode: number, body: unknown): void => {
   MockOpenApiStream.setHttpErrorResponse(statusCode, body)
-  return state
 }
